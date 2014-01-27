@@ -1,0 +1,16 @@
+<dashboard script="modal_tooltip.js" stylesheet="modal_tooltip.css">
+  <label>Modals and Tooltips</label>
+  <description/>
+  <row>
+    <table id="demo_table">
+      <searchString>index=_internal sourcetype=splunk_web_access | head | table _time user clientip method status spent uri</searchString>
+      <earliestTime>0</earliestTime>
+    </table>
+  </row>
+  <row>
+    <event id="demo_event">
+      <searchString>index=_internal sourcetype=splunk_web_access | head</searchString>
+      <earliestTime>0</earliestTime>
+    </event>
+  </row>
+</dashboard>
