@@ -1,6 +1,5 @@
 <form>
-  <label>IP details (can be accessed from "Modals and Tooltips" dashboard)</label>
-  <description/>
+  <label>IP details</label>
   <fieldset>
     <input type="text" token="ip">
       <label>IP:</label>

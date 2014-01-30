@@ -1,0 +1,93 @@
+<form script="drilldown.js">
+  <fieldset submitButton="false">
+    <input type="text" token="event_earliest" searchWhenChanged="true"/>
+    <input type="text" token="event_latest" searchWhenChanged="true"/>
+    <input type="text" token="event_earliest_formatted" searchWhenChanged="true"/>
+    <input type="text" token="event_latest_formatted" searchWhenChanged="true"/>
+    <input type="text" token="user" searchWhenChanged="true"/>
+  </fieldset>
+  <label>Multiple Drilldowns</label>
+  <description/>
+  <row>
+    <chart id="timechart_spent">
+      <title>Response time from last 7 days</title>
+      <searchString>index=_internal sourcetype=splunk_web_access | timechart span=2h avg(spent) max(spent)</searchString>
+      <earliestTime>-7d@h</earliestTime>
+      <latestTime>now</latestTime>
+      <option name="charting.axisTitleX.visibility">visible</option>
+      <option name="charting.axisTitleY.visibility">visible</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">line</option>
+      <option name="charting.chart.nullValueMode">zero</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">stacked</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">bottom</option>
+      <option name="charting.axisTitleY.text">ms</option>
+    </chart>
+  </row>
+  <row>
+    <event id="event">
+      <title>Events from $event_earliest_formatted$ to $event_latest_formatted$</title>
+      <searchString>index=_internal sourcetype=splunk_web_access earliest=$event_earliest$ latest=$event_latest$ | sort _time</searchString>
+      <earliestTime>1390788000.000</earliestTime>
+      <latestTime>1390795200</latestTime>
+      <option name="count">10</option>
+      <option name="list.drilldown">none</option>
+      <option name="list.wrap">1</option>
+      <option name="maxLines">5</option>
+      <option name="raw.drilldown">none</option>
+      <option name="rowNumbers">1</option>
+      <option name="table.drilldown">1</option>
+      <option name="table.wrap">1</option>
+      <option name="type">list</option>
+      <fields>[]</fields>
+    </event>
+  </row>
+  <row>
+    <chart id="by_user">
+      <title>Users from the last 7 days</title>
+      <searchString>index=_internal sourcetype=splunk_web_access | stats count by user</searchString>
+      <earliestTime>-7d@h</earliestTime>
+      <latestTime>now</latestTime>
+      <option name="charting.axisTitleX.visibility">visible</option>
+      <option name="charting.axisTitleY.visibility">visible</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">pie</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">default</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">right</option>
+    </chart>
+  </row>
+  <row>
+    <chart id="by_ip">
+      <title>IPs by $user$ in the last 7 days</title>
+      <searchString>index=_internal sourcetype=splunk_web_access user="$user$" | stats count by clientip</searchString>
+      <earliestTime>-7d@h</earliestTime>
+      <latestTime>now</latestTime>
+      <option name="charting.axisTitleX.visibility">visible</option>
+      <option name="charting.axisTitleY.visibility">visible</option>
+      <option name="charting.axisX.scale">linear</option>
+      <option name="charting.axisY.scale">linear</option>
+      <option name="charting.chart">pie</option>
+      <option name="charting.chart.nullValueMode">gaps</option>
+      <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+      <option name="charting.chart.stackMode">default</option>
+      <option name="charting.chart.style">shiny</option>
+      <option name="charting.drilldown">all</option>
+      <option name="charting.layout.splitSeries">0</option>
+      <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+      <option name="charting.legend.placement">right</option>
+    </chart>
+  </row>
+</form>

@@ -48,8 +48,4 @@ require([
 
         $("#my-modal").modal("show");
     });
-
-    TableView.on('hover', function(e) {
-        debugger;
-    });
 });
