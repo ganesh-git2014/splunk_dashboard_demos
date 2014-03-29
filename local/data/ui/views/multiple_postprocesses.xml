@@ -1,0 +1,25 @@
+<dashboard script="multiple_postprocesses.js">
+  <label>Multiple PostProcess Searches</label>
+  <row>
+    <html>
+      <h1>PostProcess based on audit search</h1>
+      <div id="search_range_chart"></div>
+    </html>
+    <html>
+      <h1>PostProcess based on audit search</h1>
+      <div id="search_range_table"></div>
+    </html>
+  </row>
+  <row>
+    <html>
+      <h1>PostProcess based on rest search</h1>
+      <h2>Saved searches</h2>
+      <div id="saved_searches_table"></div>
+    </html>
+    <html>
+      <h1>PostProcess based on rest search</h1>
+      <h2>Scheduled searches</h2>
+      <div id="scheduled_searches_table"></div>
+    </html>
+  </row>
+</dashboard>

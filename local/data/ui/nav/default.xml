@@ -2,6 +2,7 @@
   <collection label="Dashboards">
     <view name="modal_tooltip" default="true" />
     <view name="drilldown" />
+    <view name="multiple_postprocesses" />
   </collection>
   <view name="search" />
   <view name="data_models" />
